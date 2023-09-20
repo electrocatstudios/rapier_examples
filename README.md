@@ -19,7 +19,22 @@ cargo run -- --file "inputs/box.json" --max-frames 2000 --debug
 ```
 
 ### Running the Application on Docker
-There is a build script....TODO: Add args for Docker
+There is a build script which will build the image in Docker and pull
+the rendered image out - where it will store it in `data/outputs`. To
+run the script use:
+
+```bash
+./run_build.sh
+```
+
+Or pass in any build arguments as a quoted string:
+
+```bash
+ ./run_build.sh "-d --max-frames 500 --file inputs/convergent_users.json"
+```
+
+The format of arguments is the same as though building on the host
+machine.
 
 ### File layout
 The input file is a JSON consists of an array of `Blocks` and `Users`. 
@@ -27,6 +42,32 @@ A `Block` object looks like this:
 
 ```json
 {
-    "Location"
+    "Location": {
+        "X": 10.0,
+        "Y": 0.0
+    },
+    "Scale":{
+        "X": 1.0,
+        "Y": 20.0
+    }
+}
+```
+
+A user object is also required to enact an animation by specifying
+the forces on that object. This looks as follows:
+
+```json
+{
+    "Location": {
+        "X": 0.0,
+        "Y": 0.0
+    },
+    "Rotation": 3.1412,
+    "Power": 1.0,
+    "Color": {
+        "R": 255,
+        "G": 0,
+        "B": 0
+    }
 }
 ```
