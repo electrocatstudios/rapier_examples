@@ -100,7 +100,7 @@ fn main() {
         let mut all_stopped = true;
         for (idx,user_handle) in user_handles.iter_mut().enumerate() {
 
-            let mut user_body = rigid_body_set.get_mut(*user_handle).unwrap();
+            let user_body = rigid_body_set.get_mut(*user_handle).unwrap();
 
             let vel = user_body.linvel();
             let speed_total = vel[0].abs()  + vel[1].abs();
@@ -134,7 +134,7 @@ fn main() {
         utils::draw_blocks(&mut frame, &level.blocks);
 
         for (index, user) in level.users.iter().enumerate() {
-            let mut user_body = &mut rigid_body_set[user_handles[index]];
+            let user_body = &mut rigid_body_set[user_handles[index]];
             utils::draw_user(
                 &mut frame, 
                 &file_loader::UserLoc { 

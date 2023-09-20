@@ -68,7 +68,7 @@ pub fn get_level_from_file(filename: String) -> Result<BlockList, String> {
         Err(err) => return Err(err.to_string())
     }; 
 
-    let mut block_list: BlockList = match serde_json::from_str(&buff) {
+    let block_list: BlockList = match serde_json::from_str(&buff) {
         Ok(lj) => lj,
         Err(err) => return Err(err.to_string())
     };
