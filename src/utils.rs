@@ -1,10 +1,9 @@
 use image::{Rgba, Rgb, RgbaImage};
 use imageproc::drawing::{draw_line_segment_mut,draw_filled_ellipse_mut};
+use std::vec;
 
-use crate::block_loader::BlockList;
-
-use super::block_loader::*;
-use super::{WIDTH,HEIGHT,UserLoc};
+use crate::file_loader::*;
+use super::{WIDTH,HEIGHT};
 
 pub fn rgba8_to_rgb8(input: image::ImageBuffer<Rgba<u8>, Vec<u8>>) -> image::ImageBuffer<Rgb<u8>, Vec<u8>> {
     let width = input.width() as usize;
@@ -31,12 +30,12 @@ pub fn rgba8_to_rgb8(input: image::ImageBuffer<Rgba<u8>, Vec<u8>>) -> image::Ima
 // TODO: Set scale as input arg
 const SCALE: f32 = 20.0;
 
-pub fn draw_blocks(frame: &mut RgbaImage, blocks: &BlockList) {
+pub fn draw_blocks(frame: &mut RgbaImage, blocks: &vec::Vec::<LocationScale>) {
     let blockcol = Rgba([255,0,0,255]);
     let center_x = WIDTH/2;
     let center_y = HEIGHT/2;
 
-    for block in blocks.blocks.iter() {
+    for block in blocks.iter() {
         let start_x = center_x as f32 + (block.location.x - (block.scale.x/2.0)) * SCALE;
         let start_y = center_y as f32 + (block.location.y - (block.scale.y/2.0)) * SCALE;
         let end_x = center_x as f32 + (block.location.x + (block.scale.x/2.0)) * SCALE;

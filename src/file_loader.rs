@@ -4,13 +4,14 @@ use serde::*;
 use std::path::Path;
 use std::vec;
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BlockList {
     pub blocks: vec::Vec::<LocationScale>,
+    pub users: vec::Vec::<UserMove>
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LocationScale{
     #[serde(default)]
@@ -19,14 +20,38 @@ pub struct LocationScale{
     pub scale: BLVec2,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BLVec2 {
     pub x: f32,
     pub y: f32
 }
 
-pub fn get_blocks_from_file(filename: String) -> Result<BlockList, String> {
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct UserMove {
+    pub loc: UserLoc,
+    pub rot: f32,
+    pub power: f32,
+    pub color: UserColor
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct UserLoc {
+    pub x: f32, 
+    pub y: f32
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct UserColor {
+    pub r: u8,
+    pub g: u8,
+    pub b: u8
+}
+
+pub fn get_level_from_file(filename: String) -> Result<BlockList, String> {
     let path = Path::new(&filename);
     if !path.exists() {
         return Err(format!("File [{}] does not exist", filename));
