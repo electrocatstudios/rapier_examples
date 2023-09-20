@@ -11,7 +11,7 @@ pub struct Args {
     
     /// The maximum number of frames to render
     #[clap(default_value_t = 600)]
-    #[arg(short, long)]
+    #[arg(short=char::from_str("m").unwrap(), long)]
     pub max_frames: u32,
 
     /// The input file
