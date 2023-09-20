@@ -105,15 +105,18 @@ fn main() {
             let vel = user_body.linvel();
             let speed_total = vel[0].abs()  + vel[1].abs();
             if speed_total < SLOWEST_SPEED {
-                println!("User body {} fell below slowest speed", idx);
-                user_body.reset_forces(true);
-                user_body.set_linvel(vector![0.0,0.0], true);
+                // println!("User body {} fell below slowest speed", idx);
+                user_body.reset_forces(false);
+                user_body.set_linvel(vector![0.0,0.0], false);
+                user_body.set_angvel(0.0, false);
             }
 
             if user_body.translation().x > MAX_BOUNDS || user_body.translation().x < -MAX_BOUNDS 
                 || user_body.translation().y > MAX_BOUNDS || user_body.translation().y < -MAX_BOUNDS 
                 || !user_body.is_moving() {
-                println!("User body {} has stopped or moved out of bounds", idx);
+                if args.debug {
+                    println!("\tUser body {} has stopped or moved out of bounds", idx);
+                }
             } else {
                 all_stopped = false;
             }
