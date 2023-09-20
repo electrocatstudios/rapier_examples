@@ -1,0 +1,76 @@
+{
+    "Blocks": [
+        {
+            "Name": "Top Barrier",
+            "Location": {
+                "X": 0.0,
+                "Y": -10.0
+            },
+            "Scale": {
+                "X": 20.0,
+                "Y": 1.0
+            }
+        },
+        {
+            "Name": "Bottom Barrier",
+            "Location": {
+                "X": 0.0,
+                "Y": 10.0
+            },
+            "Scale": {
+                "X": 20.0,
+                "Y": 1.0
+            }
+        },
+        {
+            "Name": "Left Barrier",
+            "Location": {
+                "X": -10.0,
+                "Y": 0.0
+            },
+            "Scale": {
+                "X": 1.0,
+                "Y": 20.0
+            }
+        },        
+        {
+            "Name": "Right Barrier",
+            "Location": {
+                "X": 10.0,
+                "Y": 0.0
+            },
+            "Scale": {
+                "X": 1.0,
+                "Y": 20.0
+            }
+        }
+    ],
+    "Users": [
+        {
+            "Location": {
+                "X": 5.0,
+                "Y": 5.0
+            },
+            "Rotation": 4.24,
+            "Power": 0.5,
+            "Color": {
+                "R": 0,
+                "G": 128,
+                "B": 255
+            }
+        },
+        {
+            "Location": {
+                "X": -5.0,
+                "Y": 5.0
+            },
+            "Rotation": 2.36,
+            "Power": 0.5,
+            "Color": {
+                "R": 128,
+                "G": 0,
+                "B": 255 
+            }
+        }
+    ]
+}
