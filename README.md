@@ -5,6 +5,8 @@ it to a video output. There is a Docker file and build script if using Windows a
 want to install FFMPEG (which can be hard on Windows), which are required by the `openh264`
 crate.
 
+![Demonstration Output](convergent_example.gif)
+
 ### Running the Application on Computer
 To run the application you need to specify the input file (although there is a default). eg.
 
