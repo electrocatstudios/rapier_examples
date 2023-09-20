@@ -47,11 +47,11 @@
     ],
     "Users": [
         {
-            "Loc": {
+            "Location": {
                 "X": 5.0,
                 "Y": 5.0
             },
-            "Rot": 3.925,
+            "Rotation": 3.925,
             "Power": 0.5,
             "Color": {
                 "R": 255,
@@ -60,11 +60,11 @@
             }
         },
         {
-            "Loc": {
+            "Location": {
                 "X": -5.0,
                 "Y": 5.0
             },
-            "Rot": 2.355,
+            "Rotation": 2.355,
             "Power": 0.5,
             "Color": {
                 "R": 0,
@@ -73,11 +73,11 @@
             }
         },
         {
-            "Loc": {
+            "Location": {
                 "X": -5.0,
                 "Y": -5.0
             },
-            "Rot": 0.785,
+            "Rotation": 0.785,
             "Power": 0.5,
             "Color": {
                 "R": 0,
@@ -86,11 +86,11 @@
             }
         },
         {
-            "Loc": {
+            "Location": {
                 "X": 5.0,
                 "Y": -5.0
             },
-            "Rot": 5.495,
+            "Rotation": 5.495,
             "Power": 0.5,
             "Color": {
                 "R": 255,

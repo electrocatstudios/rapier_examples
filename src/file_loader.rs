@@ -30,8 +30,8 @@ pub struct BLVec2 {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct UserMove {
-    pub loc: UserLoc,
-    pub rot: f32,
+    pub location: UserLoc,
+    pub rotation: f32,
     pub power: f32,
     pub color: UserColor
 }

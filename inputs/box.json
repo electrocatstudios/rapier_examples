@@ -47,11 +47,11 @@
     ],
     "Users": [
         {
-            "Loc": {
+            "Location": {
                 "X": 5.0,
                 "Y": 5.0
             },
-            "Rot": 4.24,
+            "Rotation": 4.24,
             "Power": 0.5,
             "Color": {
                 "R": 0,
@@ -60,11 +60,11 @@
             }
         },
         {
-            "Loc": {
+            "Location": {
                 "X": -5.0,
                 "Y": 5.0
             },
-            "Rot": 2.36,
+            "Rotation": 2.36,
             "Power": 0.5,
             "Color": {
                 "R": 128,

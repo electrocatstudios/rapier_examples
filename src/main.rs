@@ -55,6 +55,7 @@ fn main() {
         user_handles.push(user::add_user(user,&mut collider_set, &mut rigid_body_set));
     }
 
+    // Set up simulation parameters
     let gravity = vector![0.0, 0.0]; // -9.81
     let integration_parameters = IntegrationParameters::default();
     let mut physics_pipeline = PhysicsPipeline::new();

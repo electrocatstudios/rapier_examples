@@ -12,12 +12,12 @@ pub fn add_user(user_move: &UserMove, collider_set: &mut ColliderSet, rigid_body
         .restitution_combine_rule(CoefficientCombineRule::Max);
 
     let user1_rigid_body = RigidBodyBuilder::new(RigidBodyType::Dynamic)
-        .translation(vector![user_move.loc.x, user_move.loc.y])
+        .translation(vector![user_move.location.x, user_move.location.y])
         .rotation(0.0)
         .linvel(
             vector![
-                user_move.rot.sin() * (user_move.power * 40.0), 
-                user_move.rot.cos() * (user_move.power * 40.0)
+                user_move.rotation.sin() * (user_move.power * 40.0), 
+                user_move.rotation.cos() * (user_move.power * 40.0)
             ]
         )
         .linear_damping(FRICTION)
