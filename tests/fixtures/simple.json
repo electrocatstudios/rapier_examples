@@ -1,0 +1,30 @@
+{
+    "Blocks": [
+        {
+            "Name": "Top Barrier",
+            "Location": {
+                "X": 0.0,
+                "Y": 10.0
+            },
+            "Scale": {
+                "X": 20.0,
+                "Y": 1.0
+            }
+        }
+    ],
+    "Users": [
+        {
+            "Location": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "Rotation": 3.141,
+            "Power": 0.5,
+            "Color": {
+                "R": 0,
+                "G": 128,
+                "B": 255
+            }
+        }
+    ]
+}
