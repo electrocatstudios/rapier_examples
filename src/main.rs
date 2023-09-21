@@ -2,13 +2,11 @@
 use chrono::prelude::*;
 use image::{Rgba, RgbaImage};
 use rapier2d::prelude::*;
+use std::str::FromStr;
 use std::{
     io::{Cursor, Read, Seek, SeekFrom},
     vec,
 };
-
-use minimp4;
-use openh264;
 
 mod cli;
 mod file_loader;
@@ -62,8 +60,6 @@ fn main() {
     let mut impulse_joint_set = ImpulseJointSet::new();
     let mut multibody_joint_set = MultibodyJointSet::new();
     let mut ccd_solver = CCDSolver::new();
-    let physics_hooks = ();
-    let event_handler = ();
 
     // Main loop
     let mut count = 0;
@@ -90,8 +86,8 @@ fn main() {
             &mut multibody_joint_set,
             &mut ccd_solver,
             None,
-            &physics_hooks,
-            &event_handler,
+            &(),
+            &(),
         );
 
         // Get user objects and check if still moveing
@@ -152,7 +148,7 @@ fn main() {
         let yuv = openh264::formats::YUVBuffer::with_rgb(
             WIDTH as usize,
             HEIGHT as usize,
-            &utils::rgba8_to_rgb8(frame.clone()).as_raw(),
+            utils::rgba8_to_rgb8(frame.clone()).as_raw(),
         );
         let bitstream = vid_encoder.encode(&yuv).unwrap();
         bitstream.write_vec(&mut buf);
@@ -169,11 +165,18 @@ fn main() {
     video_buffer.read_to_end(&mut video_bytes).unwrap();
 
     let cur_time = Utc::now();
-    let cur_time_str = format!("{}", cur_time)
-        .replace(":", "")
-        .replace(" ", "")
-        .replace("-", "");
-    let date_str = cur_time_str.split(".").collect::<Vec<_>>()[0];
+    let cur_time_str = format!("{}", cur_time).replace(
+        [
+            char::from_str(":").unwrap(),
+            char::from_str(" ").unwrap(),
+            char::from_str("-").unwrap(),
+        ],
+        "",
+    );
+
+    let date_str = cur_time_str
+        .split(char::from_str(".").unwrap())
+        .collect::<Vec<_>>()[0];
     let output_file_name = format!("outputs/output_{}.mp4", date_str);
 
     std::fs::write(output_file_name, &video_bytes).unwrap();

@@ -57,7 +57,7 @@ pub fn get_level_from_file(filename: String) -> Result<LevelDescriptor, String> 
         return Err(format!("File [{}] does not exist", filename));
     }
 
-    let mut file = match File::open(filename.to_string()) {
+    let mut file = match File::open(&filename) {
         Ok(file) => file,
         Err(err) => return Err(err.to_string()),
     };

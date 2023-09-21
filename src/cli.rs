@@ -21,6 +21,5 @@ pub struct Args {
 }
 
 pub fn parse_args() -> Args {
-    let args = Args::parse();
-    args
+    Args::parse()
 }
