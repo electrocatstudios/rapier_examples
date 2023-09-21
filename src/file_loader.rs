@@ -16,13 +16,13 @@ pub struct LevelDescriptor {
 pub struct LocationScale {
     #[serde(default)]
     pub name: String,
-    pub location: BLVec2,
-    pub scale: BLVec2,
+    pub location: FLVec2,
+    pub scale: FLVec2,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct BLVec2 {
+pub struct FLVec2 {
     pub x: f32,
     pub y: f32,
 }
