@@ -65,37 +65,36 @@ pub fn draw_user(frame: &mut RgbaImage, user: &UserLoc, usercol: Rgba<u8>) {
     );
 }
 
-
 #[cfg(test)]
 mod tests {
     use image::{Rgba, RgbaImage};
 
     use crate::file_loader::*;
-    use crate::{WIDTH,HEIGHT};
     use crate::utils;
+    use crate::{HEIGHT, WIDTH};
 
     #[test]
     fn test_draw_user() {
         let mut frame: RgbaImage = RgbaImage::new(WIDTH, HEIGHT);
-        let user = UserLoc{x: 0.0, y:0.0};
-        utils::draw_user(&mut frame, &user, Rgba([255,0,0,255]));
+        let user = UserLoc { x: 0.0, y: 0.0 };
+        utils::draw_user(&mut frame, &user, Rgba([255, 0, 0, 255]));
 
-        let test_pix = frame.get_pixel(WIDTH/2, HEIGHT/2);
+        let test_pix = frame.get_pixel(WIDTH / 2, HEIGHT / 2);
         assert_eq!(test_pix[0], 255);
         assert_eq!(test_pix[1], 0);
         assert_eq!(test_pix[2], 0);
         assert_eq!(test_pix[3], 255);
-        
+
         let sample_not_pixel = frame.get_pixel(1, 1);
         assert_eq!(sample_not_pixel[0], 0);
         assert_eq!(sample_not_pixel[1], 0);
         assert_eq!(sample_not_pixel[2], 0);
         assert_eq!(sample_not_pixel[3], 0);
-        
+
         // Update and check color changes
-        utils::draw_user(&mut frame, &user, Rgba([0,0,255,255]));
-        
-        let test_pix = frame.get_pixel(WIDTH/2, HEIGHT/2);
+        utils::draw_user(&mut frame, &user, Rgba([0, 0, 255, 255]));
+
+        let test_pix = frame.get_pixel(WIDTH / 2, HEIGHT / 2);
         assert_eq!(test_pix[0], 0);
         assert_eq!(test_pix[1], 0);
         assert_eq!(test_pix[2], 255);
