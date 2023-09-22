@@ -19,6 +19,7 @@ pub fn add_user(user_move: &UserMove, collider_set: &mut ColliderSet, rigid_body
             ]
         )
         .linear_damping(FRICTION)
+        .angular_damping(0.0)
         .build();
 
     let user_handle = rigid_body_set.insert(user_rigid_body);

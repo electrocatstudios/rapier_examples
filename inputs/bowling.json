@@ -1,0 +1,219 @@
+{
+    "Blocks": [
+        {
+            "Name": "Top Barrier",
+            "Location": {
+                "X": 0.0,
+                "Y": -30.0
+            },
+            "Scale": {
+                "X": 20.0,
+                "Y": 1.0
+            }
+        },
+        {
+            "Name": "Bottom Barrier",
+            "Location": {
+                "X": 0.0,
+                "Y": 30.0
+            },
+            "Scale": {
+                "X": 20.0,
+                "Y": 1.0
+            }
+        },
+        {
+            "Name": "Left Barrier",
+            "Location": {
+                "X": -10.0,
+                "Y": 0.0
+            },
+            "Scale": {
+                "X": 1.0,
+                "Y": 60.0
+            }
+        },        
+        {
+            "Name": "Right Barrier",
+            "Location": {
+                "X": 10.0,
+                "Y": 0.0
+            },
+            "Scale": {
+                "X": 1.0,
+                "Y": 60.0
+            }
+        }
+    ],
+    "Users": [
+        {
+            "Location": {
+                "X": -3.0,
+                "Y": -25.0
+            },
+            "Rotation": 0.0,
+            "Power": 0.0,
+            "Color": {
+                "R": 255,
+                "G": 255,
+                "B": 255
+            }
+        },
+        {
+            "Location": {
+                "X": -1.0,
+                "Y": -25.0
+            },
+            "Rotation": 0.0,
+            "Power": 0.0,
+            "Color": {
+                "R": 255,
+                "G": 255,
+                "B": 255
+            }
+        },
+        {
+            "Location": {
+                "X": 1.0,
+                "Y": -25.0
+            },
+            "Rotation": 0.0,
+            "Power": 0.0,
+            "Color": {
+                "R": 255,
+                "G": 255,
+                "B": 255
+            }
+        },   
+        {
+            "Location": {
+                "X": 3.0,
+                "Y": -25.0
+            },
+            "Rotation": 0.0,
+            "Power": 0.0,
+            "Color": {
+                "R": 255,
+                "G": 255,
+                "B": 255
+            }
+        },
+        {
+            "Location": {
+                "X": -2.0,
+                "Y": -23.0
+            },
+            "Rotation": 0.0,
+            "Power": 0.0,
+            "Color": {
+                "R": 255,
+                "G": 255,
+                "B": 255
+            }
+        },
+        {
+            "Location": {
+                "X": 0.0,
+                "Y": -23.0
+            },
+            "Rotation": 0.0,
+            "Power": 0.0,
+            "Color": {
+                "R": 255,
+                "G": 255,
+                "B": 255
+            }
+        },
+        {
+            "Location": {
+                "X": 2.0,
+                "Y": -23.0
+            },
+            "Rotation": 0.0,
+            "Power": 0.0,
+            "Color": {
+                "R": 255,
+                "G": 255,
+                "B": 255
+            }
+        },
+        {
+            "Location": {
+                "X": -1.0,
+                "Y": -21.0
+            },
+            "Rotation": 0.0,
+            "Power": 0.0,
+            "Color": {
+                "R": 255,
+                "G": 255,
+                "B": 255
+            }
+        },
+        {
+            "Location": {
+                "X": 1.0,
+                "Y": -21.0
+            },
+            "Rotation": 0.0,
+            "Power": 0.0,
+            "Color": {
+                "R": 255,
+                "G": 255,
+                "B": 255
+            }
+        },
+        {
+            "Location": {
+                "X": 0.0,
+                "Y": -19.0
+            },
+            "Rotation": 0.0,
+            "Power": 0.0,
+            "Color": {
+                "R": 255,
+                "G": 255,
+                "B": 255
+            }
+        },
+        {
+            "Location": {
+                "X": 0.0,
+                "Y": 25.0
+            },
+            "Rotation": 3.141,
+            "Power": 1.4,
+            "Color": {
+                "R": 128,
+                "G": 0,
+                "B": 255 
+            }
+        },
+        {
+            "Location": {
+                "X": -2.0,
+                "Y": 25.0
+            },
+            "Rotation": 3.0,
+            "Power": 1.5,
+            "Color": {
+                "R": 0,
+                "G": 255,
+                "B": 128 
+            }
+        },
+        {
+            "Location": {
+                "X": 2.0,
+                "Y": 25.0
+            },
+            "Rotation": 3.2,
+            "Power": 1.5,
+            "Color": {
+                "R": 128,
+                "G": 255,
+                "B": 0 
+            }
+        }
+    ]
+}
