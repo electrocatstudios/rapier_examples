@@ -1,6 +1,7 @@
 // use rapier2d::prelude::*;
 use chrono::prelude::*;
 use rapier2d::prelude::*;
+use core::panic;
 use std::{io::{Cursor, Read, Seek, SeekFrom}, vec};
 use image::{RgbaImage,Rgba};
 
@@ -12,8 +13,6 @@ mod utils;
 mod user; 
 mod cli;
 
-const WIDTH: u32 = 1920;
-const HEIGHT: u32 = 1080;
 const MAX_BOUNDS: f32 = 200.0;
 const FRICTION: f32 = 0.6;
 const SLOWEST_SPEED: f32 = 0.1;
@@ -22,8 +21,15 @@ const SLOWEST_SPEED: f32 = 0.1;
 fn main() {
     let args = cli::parse_args();
 
+    if args.frame_width < 1 {
+        panic!("Frame width must be 1 or greater");
+    }
+    if args.frame_height < 1 {
+        panic!("Frame height must be 1 or greater");
+    }
+
     // Video setup    
-    let config = openh264::encoder::EncoderConfig::new(WIDTH, HEIGHT);
+    let config = openh264::encoder::EncoderConfig::new(args.frame_width, args.frame_height);
     let mut vid_encoder = openh264::encoder::Encoder::with_config(config).unwrap();
     let mut buf = Vec::new();
 
@@ -130,16 +136,16 @@ fn main() {
         quit = quit || all_stopped;
 
         // Draw objects to a new frame
-        let mut frame: RgbaImage = RgbaImage::new(WIDTH, HEIGHT);
+        let mut frame: RgbaImage = RgbaImage::new(args.frame_width, args.frame_height);
         // Set background to dark grey
-        for x in 0..WIDTH {
-            for y in 0..HEIGHT {
+        for x in 0..args.frame_width {
+            for y in 0..args.frame_height {
                 frame.put_pixel(x,y,Rgba([15,15,15,255]));
             }
         }
 
         // -- Draw blocks to frame
-        utils::draw_blocks(&mut frame, &level.blocks);
+        utils::draw_blocks(&mut frame, &level.blocks,args.frame_width, args.frame_height);
 
         for (index, user) in level.users.iter().enumerate() {
             let user_body = &mut rigid_body_set[user_handles[index]];
@@ -149,19 +155,21 @@ fn main() {
                     x: user_body.translation().x, 
                     y: user_body.translation().y 
                 },
-                Rgba([user.color.r,user.color.g,user.color.b,255])
+                Rgba([user.color.r,user.color.g,user.color.b,255]),
+                args.frame_width,
+                args.frame_height
             );
         }
 
         // Add frame to buffer
-        let yuv = openh264::formats::YUVBuffer::with_rgb(WIDTH as usize, HEIGHT as usize,&utils::rgba8_to_rgb8(frame.clone()).as_raw());
+        let yuv = openh264::formats::YUVBuffer::with_rgb(args.frame_width as usize, args.frame_height as usize,&utils::rgba8_to_rgb8(frame.clone()).as_raw());
         let bitstream = vid_encoder.encode(&yuv).unwrap();
         bitstream.write_vec(&mut buf);
     }
 
     let mut video_buffer = Cursor::new(Vec::new());
     let mut mp4muxer = minimp4::Mp4Muxer::new(&mut video_buffer);
-    mp4muxer.init_video(WIDTH as i32, HEIGHT as i32, false, "Generated Video");
+    mp4muxer.init_video(args.frame_width as i32, args.frame_height as i32, false, "Generated Video");
     mp4muxer.write_video(&buf);
     mp4muxer.close();
 
