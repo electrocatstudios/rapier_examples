@@ -18,6 +18,10 @@ pub struct Args {
     #[clap(default_value = "inputs/box.json")]
     #[arg(short=char::from_str("f").unwrap(), long="file")]
     pub filename: String,
+
+    #[clap(default_value = "<blank>")]
+    #[arg(short=char::from_str("o").unwrap(), long)]
+    pub output_filename: String,
 }
 
 pub fn parse_args() -> Args {

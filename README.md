@@ -20,6 +20,12 @@ Or from Cargo, using the longform args
 cargo run -- --file "inputs/box.json" --max-frames 2000 --debug
 ```
 
+You can also specify the output filename (without the file extension).
+
+```rust
+cargo run -- -o "output_filename"
+```
+
 ### Running the Application on Docker
 There is a build script which will build the image in Docker and pull
 the rendered image out - where it will store it in `data/outputs`. To

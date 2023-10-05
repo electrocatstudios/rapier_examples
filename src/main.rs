@@ -74,10 +74,14 @@ fn main() {
     while !quit {
         count += 1;
         if count > args.max_frames {
-            println!("ERROR: hit the limit of frames");
+            if args.debug {
+                println!("ERROR: hit the limit of frames");
+            }
             quit = true;
         }else{
-            println!("Frame: {}", count);
+            if args.debug {
+                println!("Frame: {}", count);
+            }
         }
 
         // Step simulation on
@@ -168,7 +172,12 @@ fn main() {
     let cur_time =  Utc::now();
     let cur_time_str = format!("{}", cur_time).replace(":", "").replace(" ", "").replace("-", "");
     let date_str = cur_time_str.split(".").collect::<Vec<_>>()[0];
-    let output_file_name = format!("outputs/output_{}.mp4", date_str);
+
+    let output_file_name = if args.output_filename == "<blank>" {
+        format!("outputs/output_{}.mp4", date_str)
+    } else {
+        format!("outputs/{}.mp4", args.output_filename)
+    };
     
     std::fs::write(output_file_name, &video_bytes).unwrap();
 
