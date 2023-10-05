@@ -203,7 +203,7 @@ fn main() {
     let output_file_name = if args.output_filename == "<blank>" {
         format!("outputs/output_{}.mp4", date_str)
     } else {
-        format!("{}", args.output_filename)
+        args.output_filename.to_string()
     };
 
     std::fs::write(output_file_name, &video_bytes).unwrap();
