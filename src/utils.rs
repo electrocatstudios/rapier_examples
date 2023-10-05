@@ -31,12 +31,7 @@ pub fn rgba8_to_rgb8(
 // TODO: Set scale as input arg
 const SCALE: f32 = 20.0;
 
-pub fn draw_blocks(
-    frame: &mut RgbaImage,
-    blocks: &vec::Vec<LocationScale>,
-    width: u32,
-    height: u32,
-) {
+pub fn draw_blocks(frame: &mut RgbaImage, blocks: &[LocationScale], width: u32, height: u32) {
     let blockcol = Rgba([255, 0, 0, 255]);
     let center_x = width / 2;
     let center_y = height / 2;

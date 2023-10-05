@@ -79,10 +79,8 @@ fn main() {
                 println!("ERROR: hit the limit of frames");
             }
             quit = true;
-        } else {
-            if args.debug {
-                println!("Frame: {}", count);
-            }
+        } else if args.debug {
+            println!("Frame: {}", count);
         }
 
         // Step simulation on
@@ -167,7 +165,7 @@ fn main() {
         let yuv = openh264::formats::YUVBuffer::with_rgb(
             args.frame_width as usize,
             args.frame_height as usize,
-            &utils::rgba8_to_rgb8(frame.clone()).as_raw(),
+            utils::rgba8_to_rgb8(frame.clone()).as_raw(),
         );
 
         let bitstream = vid_encoder.encode(&yuv).unwrap();
