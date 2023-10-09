@@ -4,14 +4,14 @@ use std::io::Read;
 use std::path::Path;
 use std::vec;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LevelDescriptor {
     pub blocks: vec::Vec<LocationScale>,
     pub users: vec::Vec<UserMove>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LocationScale {
     #[serde(default)]
@@ -20,14 +20,14 @@ pub struct LocationScale {
     pub scale: FLVec2,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FLVec2 {
     pub x: f32,
     pub y: f32,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct UserMove {
     pub location: UserLoc,
@@ -36,14 +36,14 @@ pub struct UserMove {
     pub color: UserColor,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct UserLoc {
     pub x: f32,
     pub y: f32,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct UserColor {
     pub r: u8,
